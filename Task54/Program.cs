@@ -41,26 +41,24 @@ int[,] FillMatrixWhithRandom(int[,] matrix)
 int[,] SortRowsDescending(int[,] matrix)
 {
     int[] tmp = new int[matrix.GetLength(1)];
-    int min = matrix[0,0];
-    //int indeximin = 0;
+    int max = matrix[0,0];
     int indexjmin = 0;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            min = matrix[i,j];
-            //int indeximin = i;
+            max = matrix[i,j];
             indexjmin = j;
             for (int k = j; k < matrix.GetLength(1); k++)
             {
-                if (matrix[i,k] < min)
+                if (matrix[i,k] > max)
                 {
-                    min = matrix[i,k];
+                    max = matrix[i,k];
                     indexjmin = k;
                 }
             }
             matrix[i,indexjmin] = matrix[i,j];
-            matrix[i,j] = min;
+            matrix[i,j] = max;
         }
     }
     return matrix;
